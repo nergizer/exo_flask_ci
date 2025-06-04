@@ -18,7 +18,7 @@ RUN python -m pip install --upgrade pip setuptools && \
 COPY --chown=realpython src src/
 COPY --chown=realpython test test/
 
-RUN chmod 755 -R ~/src || true && \
+RUN chmod 755 -R src/ || true && \
     python -m pip install . -c constraints.txt && \
     python -m pytest test/unit/ && \
     python -m flake8 src/ && \
@@ -45,7 +45,7 @@ COPY --from=builder --chown=realpython /home/realpython/dist/page_tracker*.whl /
 
 
 
-RUN chmod 755 -R ~/src || true && \
+RUN chmod 755 -R page_tracker*.whl src/ || true && \
     python -m pip install --upgrade pip setuptools && \
     python -m pip install --no-cache-dir page_tracker*.whl
 
