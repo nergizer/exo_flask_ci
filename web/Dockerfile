@@ -15,8 +15,8 @@ COPY --chown=realpython pyproject.toml constraints.txt ./
 RUN python -m pip install --upgrade pip setuptools && \
     python -m pip install --no-cache-dir -c constraints.txt ".[dev]"
 
-COPY --chown=realpython src/ src/
-COPY --chown=realpython test/ test/
+COPY --chown=realpython src src/
+COPY --chown=realpython test test/
 
 RUN chmod 755 -R ~/src || true && \
     python -m pip install . -c constraints.txt && \
